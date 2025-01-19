@@ -15,4 +15,9 @@ class WasteCollectionZone extends Model
     protected $casts = [
         'areas' => 'array',
     ];
+
+    public function wasteCollectingSchedules()
+{
+    return $this->hasMany(WasteCollectingSchedule::class, 'waste_collection_zone_id');
+}
 }

@@ -27,7 +27,7 @@ class VehicleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('vehicle_no')
+            Forms\Components\TextInput::make('vehicle_no')
                 ->label('Vehicle No')
                 ->unique(ignorable: fn ($record) => $record)
                 ->required(),

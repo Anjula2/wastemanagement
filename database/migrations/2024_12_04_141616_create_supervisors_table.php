@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('supervisors', function (Blueprint $table) {
-            $table->id(); // Primary key
-            $table->string('supervisor_id')->unique(); // Unique Supervisor ID
-            $table->unsignedBigInteger('zone_id'); // Reference to a Zone ID
+            $table->id(); 
+            $table->string('supervisor_id')->unique();
+            $table->unsignedBigInteger('zone_id');
             $table->string('name'); 
             $table->string('phone'); 
             $table->string('nic_no'); 

@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\WasteOrderController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 
@@ -69,6 +70,8 @@ Route::delete('/cart-items', [CartController::class, 'clear']);
 Route::post('/checkout/confirm', [CartController::class, 'confirmOrder'])->name('users.cart.confirmOrder');
 
 Route::get('/recycling-tips', [HomeController::class, 'recyclingtips'])->name('users.recyclingtips.recycling-tips');
+
+Route::get('/schedule', [ScheduleController::class, 'schedule'])->name('users.schedule.schedule');
 
 Route::get('/wasteorders', [HomeController::class, 'wasteorders'])->name('company.wasteorders');
 

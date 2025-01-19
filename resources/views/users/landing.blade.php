@@ -45,7 +45,7 @@
             <!-- Navigation Links -->
             <ul class="flex space-x-4">
                 <li><a href="/" class="text-white font-bold hover:text-yellow-500">Home</a></li>
-                <li><a href="#" class="text-white font-bold hover:text-yellow-500">Schedules</a></li>
+                <li><a href="/schedule" class="text-white font-bold hover:text-yellow-500">Schedules</a></li>
                 <li><a href="/complaints/create" class="text-white font-bold hover:text-yellow-500">Complaints</a></li>
                 <li><a href="/products" class="text-white font-bold hover:text-yellow-500">Products</a></li>
                 <li><a href="/recycling-tips" class="text-white font-bold hover:text-yellow-500">Recycling Tips</a></li>
