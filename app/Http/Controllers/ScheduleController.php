@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\WasteCollectingSchedule; 
+use App\Models\WasteCollectionZone; 
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
@@ -16,6 +17,15 @@ class ScheduleController extends Controller
             return \Carbon\Carbon::parse($schedule->date)->format('l'); // Format to get day of the week
         });
 
-        return view('users.schedule.schedule', compact('schedules'));
+        $zones = WasteCollectionZone::all();
+
+        return view('users.schedule.schedule', compact('schedules','zones'));
+    }
+
+    public function zonelist()
+    {
+        $zones = WasteCollectionZone::all();
+
+        return view('users.schedule.zonelist', compact('zones'));
     }
 }

@@ -16,6 +16,9 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                serif: ['Merriweather', 'serif'],
+                poppins: ['Poppins', 'sans-serif'],
+                lato: ['Lato', 'sans-serif'],
             },
         },
     },

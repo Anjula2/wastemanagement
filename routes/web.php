@@ -73,6 +73,8 @@ Route::get('/recycling-tips', [HomeController::class, 'recyclingtips'])->name('u
 
 Route::get('/schedule', [ScheduleController::class, 'schedule'])->name('users.schedule.schedule');
 
+Route::get('/zonelist', [ScheduleController::class, 'zonelist'])->name('users.schedule.zonelist');
+
 Route::get('/wasteorders', [HomeController::class, 'wasteorders'])->name('company.wasteorders');
 
 Route::get('/companycart', [HomeController::class, 'companycart'])->name('company.companycart');

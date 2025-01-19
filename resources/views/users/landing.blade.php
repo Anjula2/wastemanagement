@@ -43,7 +43,7 @@
             </div>
 
             <!-- Navigation Links -->
-            <ul class="flex space-x-4">
+            <ul class="space-x-4 text-white font-bold hidden md:flex">
                 <li><a href="/" class="text-white font-bold hover:text-yellow-500">Home</a></li>
                 <li><a href="/schedule" class="text-white font-bold hover:text-yellow-500">Schedules</a></li>
                 <li><a href="/complaints/create" class="text-white font-bold hover:text-yellow-500">Complaints</a></li>
