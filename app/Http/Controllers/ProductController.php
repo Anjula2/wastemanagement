@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\CartItem;
 use App\Models\Review;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
     public function index()
     {
         $products = Product::all();
-        return view('users.products.index', compact('products'));
+
+        $orderCount = Order::where('user_id', Auth::id())->count(); 
+        return view('users.products.index', compact('products','orderCount'));
     }
 
     public function adminIndex()

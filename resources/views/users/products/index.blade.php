@@ -62,7 +62,7 @@
         <div id="userActions" class="hidden md:flex space-x-4">
                 <a href="{{url('/cart')}}" class="flex items-center text-white hover:text-yellow-500 transition duration-300 ease-in-out">
                     <i class="fas fa-shopping-cart"></i> <!-- Cart Icon -->
-                    <span class="ml-2">Cart</span>
+                    <span class="ml-2">Cart [{{$orderCount}}]</span>
                 </a>
             @if (Auth::check())
             <div class="relative inline-block text-left">
