@@ -13,15 +13,18 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(3);
 
         $orderCount = Order::where('user_id', Auth::id())->count(); 
-        return view('users.products.index', compact('products','orderCount'));
+
+        $cartCount = CartItem::where('user_id', Auth::id())->count(); 
+
+        return view('users.products.index', compact('products','orderCount', 'cartCount'));
     }
 
     public function adminIndex()
     {
-        $products = Product::all();
+        $products = Product::paginate(3);
         return view('admin.products.index', compact('products'));
     }
 

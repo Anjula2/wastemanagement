@@ -98,35 +98,35 @@
         <h1 class="text-center text-2xl font-bold">Buy Plastic & Polythene Waste</h1>
     </header>
 
-    <div class="container mx-auto p-6 bg-white shadow-md mt-6 rounded-md mb-8">
+    <div class="container mx-auto p-6 bg-white shadow-md mt-6 rounded-md mb-8 overflow-x-auto">
         <h2 class="text-xl font-bold text-gray-800 mb-4">Available Plastic Waste</h2>
         <table class="w-full border-collapse border border-gray-300">
-            <thead>
-                <tr class="bg-blue-600 text-white">
-                    <th class="border border-gray-300 px-4 py-2">ID</th>
-                    <th class="border border-gray-300 px-4 py-2">Waste Type</th>
-                    <th class="border border-gray-300 px-4 py-2">Quantity</th>
-                    <th class="border border-gray-300 px-4 py-2">Price per ton</th>
-                    <th class="border border-gray-300 px-4 py-2">Description</th>
+        <thead>
+            <tr class="bg-blue-600 text-white">
+                <th class="border border-gray-300 px-4 py-2">ID</th>
+                <th class="border border-gray-300 px-4 py-2">Waste Type</th>
+                <th class="border border-gray-300 px-4 py-2">Quantity</th>
+                <th class="border border-gray-300 px-4 py-2">Price per ton</th>
+                <th class="border border-gray-300 px-4 py-2">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($data as $sellable_waste)
+                <tr class="text-center">
+                    <td class="border border-gray-300 px-4 py-2">{{$sellable_waste->waste_type_id}}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{$sellable_waste->waste_type}}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{$sellable_waste->stock_level}} Tons</td>
+                    <td class="border border-gray-300 px-4 py-2">Rs. {{number_format($sellable_waste->price, 2)}}</td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        @if(!empty($sellable_waste->description))
+                            {!! nl2br(e($sellable_waste->description)) !!}
+                        @else
+                            <span class="text-gray-500">No Description</span>
+                        @endif
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach($data as $sellable_waste)
-                    <tr class="text-center">
-                        <td class="border border-gray-300 px-4 py-2">{{$sellable_waste->waste_type_id}}</td>
-                        <td class="border border-gray-300 px-4 py-2">{{$sellable_waste->waste_type}}</td>
-                        <td class="border border-gray-300 px-4 py-2">{{$sellable_waste->stock_level}} Tons</td>
-                        <td class="border border-gray-300 px-4 py-2">Rs. {{number_format($sellable_waste->price, 2)}}</td>
-                        <td class="border border-gray-300 px-4 py-2">
-                            @if(!empty($sellable_waste->description))
-                                {!! nl2br(e($sellable_waste->description)) !!}
-                            @else
-                                <span class="text-gray-500">No Description</span>
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
+            @endforeach
+        </tbody>
         </table>
 
         <div class="form-container mt-6">

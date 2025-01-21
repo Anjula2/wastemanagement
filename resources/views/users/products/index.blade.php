@@ -62,7 +62,7 @@
         <div id="userActions" class="hidden md:flex space-x-4">
                 <a href="{{url('/cart')}}" class="flex items-center text-white hover:text-yellow-500 transition duration-300 ease-in-out">
                     <i class="fas fa-shopping-cart"></i> <!-- Cart Icon -->
-                    <span class="ml-2">Cart [{{$orderCount}}]</span>
+                    <span class="ml-2">Cart [{{$cartCount}}]</span>
                 </a>
             @if (Auth::check())
             <div class="relative inline-block text-left">
@@ -97,7 +97,7 @@
             <li><a href="/recycling-tips" class="block hover:text-yellow-500">Recycling Tips</a></li>
             <li><a href="{{url('/cart')}}" class="flex items-center text-white hover:text-yellow-500 transition duration-300 ease-in-out">
                 <i class="fas fa-shopping-cart"></i> <!-- Cart Icon -->
-                <span class="ml-2">Cart</span>
+                <span class="ml-2">Cart[{{$cartCount}}]</span>
                 </a></li>
         </ul>
         <div class="p-4">
@@ -164,6 +164,39 @@
                     </div>
                 </div>
             @endforeach
+
+        @if ($products->hasPages())
+              <div class="flex justify-center mt-6">
+              <div class="flex items-center space-x-4">
+              {{-- Previous Button --}}
+              @if ($products->onFirstPage())
+              <button class="px-4 py-2 text-gray-500 bg-gray-200 rounded-full cursor-not-allowed" disabled>
+              <i class="fas fa-chevron-left"></i>
+              </button>
+       @else
+          <a href="{{ $data->previousPageUrl() }}" class="px-4 py-2 text-white bg-blue-500 rounded-full hover:bg-blue-600 transition">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+      @endif
+
+      {{-- Page Links --}}
+      @foreach ($products->links() as $link)
+        <a href="{{ $link->url }}" class="px-4 py-2 text-gray-700 bg-gray-200 rounded-full hover:bg-blue-100 transition">{{ $link->label }}</a>
+      @endforeach
+
+      {{-- Next Button --}}
+      @if ($products->hasMorePages())
+        <a href="{{ $data->nextPageUrl() }}" class="px-4 py-2 text-white bg-blue-500 rounded-full hover:bg-blue-600 transition">
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      @else
+        <button class="px-4 py-2 text-gray-500 bg-gray-200 rounded-full cursor-not-allowed" disabled>
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      @endif
+    </div>
+  </div>
+@endif
         </div>
 
         <!-- Trash Bins Section -->
@@ -196,6 +229,38 @@
                     </div>
                 </div>
             @endforeach
+            @if ($products->hasPages())
+              <div class="flex justify-center mt-6">
+              <div class="flex items-center space-x-4">
+              {{-- Previous Button --}}
+              @if ($products->onFirstPage())
+              <button class="px-4 py-2 text-gray-500 bg-gray-200 rounded-full cursor-not-allowed" disabled>
+              <i class="fas fa-chevron-left"></i>
+              </button>
+       @else
+          <a href="{{ $data->previousPageUrl() }}" class="px-4 py-2 text-white bg-blue-500 rounded-full hover:bg-blue-600 transition">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+      @endif
+
+      {{-- Page Links --}}
+      @foreach ($products->links() as $link)
+        <a href="{{ $link->url }}" class="px-4 py-2 text-gray-700 bg-gray-200 rounded-full hover:bg-blue-100 transition">{{ $link->label }}</a>
+      @endforeach
+
+      {{-- Next Button --}}
+      @if ($products->hasMorePages())
+        <a href="{{ $data->nextPageUrl() }}" class="px-4 py-2 text-white bg-blue-500 rounded-full hover:bg-blue-600 transition">
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      @else
+        <button class="px-4 py-2 text-gray-500 bg-gray-200 rounded-full cursor-not-allowed" disabled>
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      @endif
+    </div>
+  </div>
+@endif
         </div>
 
         <h3 class="text-xl font-semibold mb-4">Compost and Fertilizers</h3>

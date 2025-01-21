@@ -44,7 +44,7 @@
         <div id="userActions" class="hidden md:flex space-x-4">
                 <a href="{{url('/cart')}}" class="flex items-center text-white hover:text-yellow-500 transition duration-300 ease-in-out">
                     <i class="fas fa-shopping-cart"></i> <!-- Cart Icon -->
-                    <span class="ml-2">Cart</span>
+                    <span class="ml-2">Cart[{{$cartCount}}]</span>
                 </a>
             @if (Auth::check())
             <div class="relative inline-block text-left">
@@ -79,7 +79,7 @@
             <li><a href="/recycling-tips" class="block hover:text-yellow-500">Recycling Tips</a></li>
             <li><a href="{{url('/cart')}}" class="flex items-center text-white hover:text-yellow-500 transition duration-300 ease-in-out">
                 <i class="fas fa-shopping-cart"></i> <!-- Cart Icon -->
-                <span class="ml-2">Cart</span>
+                <span class="ml-2">Cart[{{$cartCount}}]</span>
                 </a></li>
         </ul>
         <div class="p-4">
@@ -98,7 +98,7 @@
 
 
         <!-- Back to Products Button -->
-        <div class="mt-8 ">
+        <div class="mt-8 ml-4 mb-2">
             <a href="/products" class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 transition">Back to Products</a>
         </div>
 
@@ -279,13 +279,12 @@
             form.method = "POST";
             form.action = "{{ route('logout') }}";
 
-            // Add CSRF token input
-            const csrfToken = document.createElement("input");
-            csrfToken.type = "hidden";
-            csrfToken.name = "_token";
-            csrfToken.value = "{{ csrf_token() }}";
+            const csrfInput = document.createElement("input");
+            csrfInput.type = "hidden";
+            csrfInput.name = "_token";
+            csrfInput.value = "{{ csrf_token() }}";
 
-            form.appendChild(csrfToken);
+            form.appendChild(csrfInput);
             document.body.appendChild(form);
             form.submit();
         });

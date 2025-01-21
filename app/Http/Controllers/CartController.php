@@ -18,7 +18,9 @@ class CartController extends Controller
 
         $orderCount = Order::where('user_id', Auth::id())->count(); 
 
-        return view('users.cart.index', compact('cartItems','orderCount'));
+        $cartCount = CartItem::where('user_id', Auth::id())->count(); 
+
+        return view('users.cart.index', compact('cartItems','orderCount', 'cartCount'));
     }
 
     public function add(Product $product)
